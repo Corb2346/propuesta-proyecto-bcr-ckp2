@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './components/invalid-login-dialog/dialog.component';
+import { SharedModule } from './shared/shared/shared.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DialogComponent } from './components/invalid-login-dialog/dialog.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

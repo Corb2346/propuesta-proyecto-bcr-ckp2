@@ -1,1 +1,32 @@
-<p>aca mostramos la info de la api </p>
+<h1>Welcome to PokeApi Finder</h1>
+
+<div> 
+    <button >Log out</button>
+</div>
+<form name="frm">
+    <input type="text" id="pkmFind" name="seach" placeholder="searchPokemon" #pokemonName >
+  </form>
+
+
+<button (click)="pokemonsearch(pokemonName.value)">Search</button> 
+
+<div class="cards-container" *ngIf = "pokemon$ | async as pokemon">
+
+    <mat-card class="example-card" *ngFor=" let sprite of pokemon.sprites">
+        <mat-card-header >
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>
+            <label class="pokemon-title"> {{sprite.name}}</label>
+          </mat-card-title>
+          <mat-card-subtitle *ngFor="let stat of pokemon.stats" >
+            {{stat.stat.name}} : {{stat.base_stat}} </mat-card-subtitle>
+        </mat-card-header >
+        <img class=".imgpkmn" mat-card-image img [src]="sprite.img" style="height:120px" width="150px" alt="Imagen no encontrada">
+        <mat-card-content>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+</div>
