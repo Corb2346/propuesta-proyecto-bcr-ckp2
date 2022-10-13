@@ -1,4 +1,9 @@
+<body>
+<div class="login-page">
 <div class="form">
+    <span class="tittle"> LOGIN </span> 
+    <br>
+    <br>
     <form [formGroup]="reactiveForm">
         <label >UserName</label>
         <input type="text" placeholder="UserName" formControlName="userName" #userName>
@@ -17,4 +22,6 @@
     </form>
 </div>
 
-<div *ngIf="diplayLoginIncorrect ">Usuario o Contraseña Incorrecta </div>
+<div *ngIf="diplayLoginIncorrect" class="form">Usuario o Contraseña Incorrecta </div>
+</div>
+</body>
