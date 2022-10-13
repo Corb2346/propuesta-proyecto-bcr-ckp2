@@ -1,0 +1,18 @@
+<div class="form">
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+        <label >UserName</label>
+        <input type="text" placeholder="UserName" formControlName="userName">
+        <span style="color: red" *ngIf=" user && user.invalid && user.touched"> UserName requiered</span>
+
+    <br><br>
+    
+        <label >Password</label>
+        <input type="text" placeholder="password" formControlName="passWord">
+        <span style="color: red" *ngIf=" password && password.invalid && password.touched"> Password requiered</span>
+
+    <br><br>
+
+        <button (click)="getData()" 
+        [disabled]="reactiveForm.invalid">Send</button>
+    </form>
+</div>
