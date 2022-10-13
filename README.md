@@ -1,4 +1,4 @@
-##comado compilado con ng build --configuration production --base-href /app/
+## comado compilado con ng build --configuration production --base-href /app/
 
 # PrpuestaBcrCkp2
 
