@@ -9,6 +9,8 @@ import { MainmenuComponent } from './components/mainmenu/mainmenu/mainmenu.compo
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './components/invalid-login-dialog/dialog.component';
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     LoginComponent,
     MainmenuComponent,
+    DialogComponent,
     
   ],
   imports: [
@@ -24,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

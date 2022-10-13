@@ -1,18 +1,20 @@
 <div class="form">
-    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="reactiveForm">
         <label >UserName</label>
-        <input type="text" placeholder="UserName" formControlName="userName">
+        <input type="text" placeholder="UserName" formControlName="userName" #userName>
         <span style="color: red" *ngIf=" user && user.invalid && user.touched"> UserName requiered</span>
 
     <br><br>
     
         <label >Password</label>
-        <input type="text" placeholder="password" formControlName="passWord">
+        <input type="text" placeholder="password" formControlName="passWord" #passWord>
         <span style="color: red" *ngIf=" password && password.invalid && password.touched"> Password requiered</span>
 
     <br><br>
 
-        <button (click)="getData()" 
+        <button (click)="onSubmit(userName.value,password.value)"
         [disabled]="reactiveForm.invalid">Send</button>
     </form>
 </div>
+
+<div *ngIf="diplayLoginIncorrect ">Usuario o Contraseña Incorrecta </div>

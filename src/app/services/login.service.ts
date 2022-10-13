@@ -12,4 +12,12 @@ export class LoginService {
     localStorage.setItem('password', 'brayan123');
     console.log("datos almacenados");
   }
+
+  getUserData(){
+     return localStorage.getItem('username').toLocaleLowerCase();
+  }
+
+  getPasswordData(){
+    return localStorage.getItem('password').toLocaleLowerCase();
+  }
 }

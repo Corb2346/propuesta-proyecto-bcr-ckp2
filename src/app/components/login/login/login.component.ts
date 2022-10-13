@@ -14,30 +14,43 @@ export class LoginComponent implements OnInit {
 
   public userName: string ='';
   public passWord: string ='';
+  diplayLoginIncorrect: boolean = false;
+
+  
 
   constructor( private router:Router,public loginService:LoginService) { }
 
   ngOnInit(): void {
     this.setData();
     this.reactiveForm = new FormGroup({
-      userName: new FormControl('',[Validators.required,Validators.minLength(5)]),
-      passWord: new FormControl('',[Validators.required,Validators.minLength(5)])
+      userName: new FormControl('',[Validators.required]),
+      passWord: new FormControl('',[Validators.required])
    });
   }
 
-  getData(){
+  onSubmit(userName:string,passWord:string){
+    this.userName = userName;
+    this.passWord = passWord;
     console.log("username",this.userName, "password", this.passWord);
-    this.router.navigate(['mainmenu'])
+
+    let usernameRecover = this.loginService.getUserData()
+    
+    let passwordRecoverd = this.loginService.getPasswordData();
+    console.log("dato traido del localstorage", typeof(usernameRecover),passwordRecoverd);
+
+    if(usernameRecover == this.userName && passwordRecoverd == this.passWord){
+        this.router.navigate(['mainmenu'])
+    } else {
+      console.log("usuario o contraseña incorrecta");
+      this.diplayLoginIncorrect = !this.diplayLoginIncorrect;
+      console.log(this.diplayLoginIncorrect);
+      
+    }
   }
 
   setData(){
     console.log("data almacenada");
     this.loginService.setSession();
-  }
-
-  onSubmit(){
-    console.log(this.reactiveForm);
-    
   }
 
   get user()
