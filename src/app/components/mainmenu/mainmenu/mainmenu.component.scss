@@ -1,7 +1,5 @@
 body{
   background-color: rgb(213, 213, 213);
-
-  padding-top: 50px;
 }
 .title{
   background-image: url("/assets/pokeapi.png");
@@ -41,4 +39,28 @@ body{
   .pokemon-title{
     color: white;
   }
+
+  .example-card2{
+    background-color: rgb(123, 123, 123);
+  }
+
+  mat-tab-group {
+    background-color: rgb(59, 59, 59);
+  }
+
+  .title-content-two{
+    color: white;
+    font-size: 30px;
+    display: flex;
+  }
+
+  .select-options{
+    width: 150px;
+  }
+
+  .selection{
+    font-size: 30px;
+    color: white;
+  }
+
 

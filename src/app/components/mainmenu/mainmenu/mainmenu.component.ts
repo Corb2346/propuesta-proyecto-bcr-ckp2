@@ -12,21 +12,18 @@ export class MainmenuComponent implements OnInit {
   public pokemon$: Observable<any>;
 
   inputEmpty:boolean = true;
-
+  public typePokemon: string[]= ['normal','fire','water','grass','electric','ice','fighting','poison','dragon'];
   types:any[] = [];
+  sprites:any[] = [];
+
+  selectedType :string  = "";
 
   constructor( public BringDataService:BringDataService) {
     
    }
 
   ngOnInit() {
-    this.BringDataService.getType().subscribe({
-      next: resp => {
-        this.types = resp.results;
-        console.log(this.types);
 
-      }
-    })
   }
 
   pokemonsearch(pokemonName:string){
@@ -36,5 +33,18 @@ export class MainmenuComponent implements OnInit {
       })
     )
   }
+
+  typePkm(event:any){
+    this.selectedType = event.target.value;
+    this.BringDataService.getType(this.selectedType).subscribe({
+      next: resp => {
+        this.types = resp.pokemon;
+        console.log(this.types);
+      }
+     })
+
+ 
+  }
+
   
 }

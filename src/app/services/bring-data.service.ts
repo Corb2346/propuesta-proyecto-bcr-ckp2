@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { combineLatestAll, concatMap, map, merge, Observable, tap } from 'rxjs';
-import { Typepoke } from '../components/interface/type-poke';
 
 @Injectable({
   providedIn: 'root'
@@ -82,13 +81,16 @@ export class BringDataService {
     )
   }
 
-  getType(){
-    return this.http.get<Typepoke>('https://pokeapi.co/api/v2/type').pipe(
-      map(resp => {
-        console.log(resp.results);
+  getType(type:string){
+    return this.http.get(`https://pokeapi.co/api/v2/type/${type}`).pipe(
+      map((resp:any) => {
+        console.log(resp);
         return resp;
       })
       
     )
   }
+
+
+
 }

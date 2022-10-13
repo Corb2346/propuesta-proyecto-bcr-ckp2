@@ -1,36 +1,78 @@
 <body>
 
-<div class="container-title">
-<h1 class="title"></h1>
+  <mat-tab-group mat-align-tabs="start">
 
-<form name="frm">
-    <input type="text" id="pkmFind" name="seach" placeholder="searchPokemon" #pokemonName >
-    <button class="btnFinder" (click)="pokemonsearch(pokemonName.value)">Search</button>  
-  </form>
-</div>
+    <mat-tab class="mat-tab" label="First">
+      
+      <div class="container-title">
+      <h1 class="title"></h1>
+      
+      <form name="frm">
+          <input type="text" id="pkmFind" name="seach" placeholder="searchPokemon" #pokemonName >
+          <button class="btnFinder" (click)="pokemonsearch(pokemonName.value)">Search</button>  
+        </form>
+      </div>
+      
+      <div class="cards-container" *ngIf = "pokemon$ | async as pokemon">
+      
+          <mat-card class="example-card" *ngFor=" let sprite of pokemon.sprites">
+              <mat-card-header >
+                <mat-card-title>
+                  <label class="pokemon-title"> {{sprite.name}}</label>
+                </mat-card-title>
+                <mat-card-subtitle *ngFor="let stat of pokemon.stats" >
+                  {{stat.stat.name}} : {{stat.base_stat}} </mat-card-subtitle>
+              </mat-card-header >
+              <img class=".imgpkmn" mat-card-image img [src]="sprite.img" style="height:120px" width="150px" alt="Imagen no encontrada">
+
+            </mat-card>
+      
+      
+      </div>
+        </mat-tab>
+
+        
+    <mat-tab label="Second">
+      
+          <h3 class="title-content-two"> Select the type of your pokemon</h3>
+
+          <select class="select-options" (change)="typePkm($event)">
+          <option value="default">---------</option>
+          <option *ngFor="let type of typePokemon" [value]="type" >
+              {{type}}
+          </option>
+          </select>
+          <br>
+          <br>
+          <p class="selection">You selected {{selectedType}}</p> 
+
+            <div *ngFor="let poke of types">
+            
+              <mat-card class="example-card2"  >
+                <mat-card-header>
+                  <mat-card-title>
+                    <label class="pokemon-title"> {{poke.pokemon.name}} </label>
+                  </mat-card-title>
+                  <mat-card-subtitle >
+
+                  </mat-card-subtitle>
+
+                </mat-card-header>
+
+              </mat-card>
+
+          </div>
+    </mat-tab>
+
+    <mat-tab label="Third">Content 3
+
+    </mat-tab>
 
 
+  </mat-tab-group>
 
 
-<div class="cards-container" *ngIf = "pokemon$ | async as pokemon">
-
-    <mat-card class="example-card" *ngFor=" let sprite of pokemon.sprites">
-        <mat-card-header >
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>
-            <label class="pokemon-title"> {{sprite.name}}</label>
-          </mat-card-title>
-          <mat-card-subtitle *ngFor="let stat of pokemon.stats" >
-            {{stat.stat.name}} : {{stat.base_stat}} </mat-card-subtitle>
-        </mat-card-header >
-        <img class=".imgpkmn" mat-card-image img [src]="sprite.img" style="height:120px" width="150px" alt="Imagen no encontrada">
-        <mat-card-content>
-
-        </mat-card-content>
-
-      </mat-card>
-
-
-</div>
-  
 </body>
+
+
+
