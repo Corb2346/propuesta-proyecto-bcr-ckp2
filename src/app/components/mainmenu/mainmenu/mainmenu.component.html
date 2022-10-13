@@ -1,14 +1,16 @@
-<h1>Welcome to PokeApi Finder</h1>
+<body>
 
-<div> 
-    <button >Log out</button>
-</div>
+<div class="container-title">
+<h1 class="title"></h1>
+
 <form name="frm">
     <input type="text" id="pkmFind" name="seach" placeholder="searchPokemon" #pokemonName >
+    <button class="btnFinder" (click)="pokemonsearch(pokemonName.value)">Search</button>  
   </form>
+</div>
 
 
-<button (click)="pokemonsearch(pokemonName.value)">Search</button> 
+
 
 <div class="cards-container" *ngIf = "pokemon$ | async as pokemon">
 
@@ -30,3 +32,5 @@
 
 
 </div>
+  
+</body>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { combineLatestAll, concatMap, map, merge, Observable, tap } from 'rxjs';
+import { Typepoke } from '../components/interface/type-poke';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +32,6 @@ export class BringDataService {
     );
     
   }
-
-  /*getPokemon(){
-    return merge(this.http.get('https://pokeapi.co/api/v2/pokemon/pikachu'),this.http.get('https://pokeapi.co/api/v2/pokemon/ditto')).pipe(
-      tap( resp =>{
-        console.log(resp);
-      })
-    )
-  }*/
 
   getSpecies(url:string, original: any) : Observable<any>{
     return  this.http.get(url).pipe(
@@ -86,6 +79,16 @@ export class BringDataService {
           sprites: resp.sprites
         }
       })
+    )
+  }
+
+  getType(){
+    return this.http.get<Typepoke>('https://pokeapi.co/api/v2/type').pipe(
+      map(resp => {
+        console.log(resp.results);
+        return resp;
+      })
+      
     )
   }
 }

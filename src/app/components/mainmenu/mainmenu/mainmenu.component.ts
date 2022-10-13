@@ -10,11 +10,23 @@ import { BringDataService } from '../../../services/bring-data.service';
 export class MainmenuComponent implements OnInit {
 
   public pokemon$: Observable<any>;
+
   inputEmpty:boolean = true;
+
+  types:any[] = [];
+
   constructor( public BringDataService:BringDataService) {
+    
    }
 
   ngOnInit() {
+    this.BringDataService.getType().subscribe({
+      next: resp => {
+        this.types = resp.results;
+        console.log(this.types);
+
+      }
+    })
   }
 
   pokemonsearch(pokemonName:string){
@@ -24,8 +36,5 @@ export class MainmenuComponent implements OnInit {
       })
     )
   }
-
-
   
-
 }
